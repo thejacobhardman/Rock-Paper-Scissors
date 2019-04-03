@@ -168,26 +168,66 @@ def Expanded_Game():
                 print("\nPlease enter a valid selection.")
 
         # Generating the computer's move
-        Computer_Choice = Choices[random.randint(0,4)]
+        Computer_Choice = Exp_Choices[random.randint(0,4)]
 
         print("\nPlayer: " + Player_Choice + " <--- ---> " + Computer_Choice + " :Computer")
 
         # Calculating who won the game
+        # Rock crushes scissors
         if Player_Choice.upper() == "ROCK" and Computer_Choice.upper() == "SCISSORS":
-            print("\nPlayer's " + Player_Choice + " beats Computer's " + Computer_Choice + "!")
+            print("\nPlayer's Rock crushes Computer's Scissors!")
             Player_Score = Player_Score + 1
             print("Player's Score: " + str(Player_Score) + "\nComputer's Score: " + str(Computer_Score))
+        # Scissors cuts paper
         elif Player_Choice.upper() == "SCISSORS" and Computer_Choice.upper() == "PAPER":
-            print("\nPlayer's " + Player_Choice + " beats Computer's " + Computer_Choice + "!")
+            print("\nPlayer's Scissors cuts Computer's Paper!")
             Player_Score = Player_Score + 1
             print("Player's Score: " + str(Player_Score) + "\nComputer's Score: " + str(Computer_Score))
+        # Paper covers rock
         elif Player_Choice.upper() == "PAPER" and Computer_Choice.upper() == "ROCK":
-            print("\nPlayer's " + Player_Choice + " beats Computer's " + Computer_Choice + "!")
+            print("\nPlayer's Paper covers Computer's Rock!")
             Player_Score = Player_Score + 1
             print("Player's Score: " + str(Player_Score) + "\nComputer's Score: " + str(Computer_Score))
+        # Rock crushes lizard
+        elif Player_Choice.upper() == "ROCK" and Computer_Choice.upper() == "LIZARD":
+            print("\nPlayer's Rock crushes Computer's Lizard!")
+            Player_Score = Player_Score + 1
+            print("Player's Score: " + str(Player_Score) + "\nComputer's Score: " + str(Computer_Score))
+        # Lizard poisons Spock
+        elif Player_Choice.upper() == "LIZARD" and Computer_Choice.upper() == "SPOCK":
+            print("\nPlayer's Lizard poisons Computer's Spock!")
+            Player_Score = Player_Score + 1
+            print("Player's Score: " + str(Player_Score) + "\nComputer's Score: " + str(Computer_Score))
+        # Spock smashes scissors
+        elif Player_Choice.upper() == "SPOCK" and Computer_Choice.upper() == "SCISSORS":
+            print("\nPlayer's Spock smashes Computer's Scissors!")
+            Player_Score = Player_Score + 1
+            print("Player's Score: " + str(Player_Score) + "\nComputer's Score: " + str(Computer_Score))
+        # Scissors decapitates lizard
+        elif Player_Choice.upper() == "Scissors" and Computer_Choice.upper() == "LIZARD":
+            print("\nPlayer's Scissors decapitates Computer's Lizard!")
+            Player_Score = Player_Score + 1
+            print("Player's Score: " + str(Player_Score) + "\nComputer's Score: " + str(Computer_Score))
+        # Lizard eats paper
+        elif Player_Choice.upper() == "LIZARD" and Computer_Choice.upper() == "PAPER":
+            print("\nPlayer's Lizard eats Computer's Paper!")
+            Player_Score = Player_Score + 1
+            print("Player's Score: " + str(Player_Score) + "\nComputer's Score: " + str(Computer_Score))
+        # Paper disproves Spock
+        elif Player_Choice.upper() == "PAPER" and Computer_Choice.upper() == "SPOCK":
+            print("\nPlayer's Paper disproves Computer's Spock!")
+            Player_Score = Player_Score + 1
+            print("Player's Score: " + str(Player_Score) + "\nComputer's Score: " + str(Computer_Score))
+        # Spock vaporizes Rock
+        elif Player_Choice.upper() == "SPOCK" and Computer_Choice.upper() == "ROCK":
+            print("\nPlayer's Spock vaporizes Computer's Rock!")
+            Player_Score = Player_Score + 1
+            print("Player's Score: " + str(Player_Score) + "\nComputer's Score: " + str(Computer_Score))
+        # Tie game
         elif Player_Choice == Computer_Choice:
             print("Both the Player and the Computer played " + Player_Choice + "!")
             print("Player's Score: " + str(Player_Score) + "\nComputer's Score: " + str(Computer_Score))
+        # Computer wins
         else:
             print("\nComputer's " + Computer_Choice + " beats Player's " + Player_Choice + "!")
             Computer_Score = Computer_Score + 1
@@ -224,12 +264,26 @@ while Is_Running == True:
 
         print("ROCK! PAPER! SCISSORS!")
 
-        User_Input = input("Enter '1' to play standard Rock Paper Scissors\nor enter '2' to play Rock Paper Scissors Lizard Spock: ")
+        User_Input = input("""\nEnter '1' to play standard Rock Paper Scissors
+Enter '2' to play Rock Paper Scissors Lizard Spock
+Enter '3' to quit the game: """)
 
         if str(User_Input) == "1":
             Vanilla_Game()
         elif str(User_Input) == "2":
             Expanded_Game()
+        elif str(User_Input) == "3":
+            while User_Confirm == False:
+                User_Input = input("\nAre you sure you want to quit the game? (y/n): ")
+                if User_Input.upper() == "Y":
+                    Is_Running = False
+                    User_Confirm = True
+                    break
+                elif User_Input.upper() == "N":
+                    break
+                else:
+                    print("\nPlease enter a valid selection.")
+                    input("Press 'enter' to continue.")
         else:
             print("\nPlease enter a valid selection.")
             input("Press 'enter' to continue.")
